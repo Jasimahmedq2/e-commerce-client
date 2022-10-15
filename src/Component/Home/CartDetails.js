@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Store } from './Store/Store';
 
 const CartDetails = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const [details, setDetails] = useState([])
   console.log(details)
@@ -23,6 +24,7 @@ const CartDetails = () => {
         type: 'CART_ADD_ITEM',
         payload: { ...details, quantity },
       });
+      navigate('/cart')
   };
 
   useEffect(() => {
